@@ -1,7 +1,6 @@
 // Mobile menu toggle & close on link click
 const mobileMenuBtn = document.getElementById('mobileMenuBtn'),
-      navMenu = document.getElementById('navMenu'),
-      scrollTopBtn = document.getElementById('scrollTop');
+      navMenu = document.getElementById('navMenu');   
 mobileMenuBtn.onclick = () => navMenu.classList.toggle('active');
 navMenu.querySelectorAll('a').forEach(a => a.onclick = () => navMenu.classList.remove('active'));
 
@@ -13,10 +12,9 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   };
 });
 
-// Navbar background on scroll + scrollTop btn visibility
+// Navbar background on scroll
 window.onscroll = () => {
   document.querySelector('nav').style.background = window.scrollY > 100 ? 'rgba(0,0,0,0.5)' : 'rgba(0,0,0,0.3)';
-  scrollTopBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
 };
 
 // Floating particles

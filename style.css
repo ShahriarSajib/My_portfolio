@@ -16,7 +16,7 @@
   box-sizing: border-box;
 }
 
-html {
+html{
   height: 100%;
 }
 
@@ -25,7 +25,6 @@ body {
   line-height: 1.6;
   color: var(--text-primary);
   background: var(--primary-bg);
-  min-height: 100vh;
   overflow-x: hidden;
   transition: all 0.3s ease;
   position: relative;
@@ -69,6 +68,7 @@ nav {
 
 .nav-center {
   display: flex;
+
   list-style: none;
   gap: 2rem;
 }
@@ -118,7 +118,7 @@ nav {
 
 /* Hero Section */
 .hero {
-  height: calc(100vh - 70px); /* Account for nav height */
+  height: 100vh ; /* Account for nav height */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -643,8 +643,8 @@ nav {
   background: var(--footer-bg);
   backdrop-filter: blur(15px);
   border-top: 1px solid var(--border-color);
-  padding: 3rem 0 2rem;
-  margin-top: auto; /* Key fix for footer positioning */
+  padding: 3rem 0 0;
+  margin: 0; /* Key fix for footer positioning */
   width: 100%;
 }
 
@@ -708,15 +708,60 @@ nav {
 
 .footer-bottom {
   text-align: center;
-  padding-top: 2rem;
+  padding: 2rem 0;
   border-top: 1px solid var(--border-color);
   color: var(--text-secondary);
+  margin: 0;
 }
 
 .footer-bottom p {
   margin: 0;
 }
 
+/* Particle Effects */
+.particle {
+  position: fixed;
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  animation: floatUp linear infinite;
+}
+
+/* Default gradient particles */
+.particle {
+  background: var(--accent-gradient);
+  box-shadow: 0 0 8px rgba(116, 185, 255, 0.4);
+}
+
+/* Add variety - randomly applied by JavaScript */
+.particle:nth-child(3n+1) {
+  background: radial-gradient(circle, rgba(116, 185, 255, 0.8) 0%, rgba(116, 185, 255, 0.2) 70%);
+  box-shadow: 0 0 15px rgba(116, 185, 255, 0.6);
+}
+
+.particle:nth-child(3n+2) {
+  background: radial-gradient(circle, rgba(108, 92, 231, 0.8) 0%, rgba(108, 92, 231, 0.2) 70%);
+  box-shadow: 0 0 12px rgba(108, 92, 231, 0.5);
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) rotate(0deg) scale(0.5);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+    transform: translateY(90vh) rotate(36deg) scale(1);
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg) scale(0.3);
+    opacity: 0;
+  }
+}
 /* Responsive Design */
 @media (max-width: 768px) {
   .mobile-menu-btn {
